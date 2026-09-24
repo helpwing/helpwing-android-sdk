@@ -22,8 +22,7 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - uses: android-actions/setup-android@v3
-
+      # ubuntu-latest ships the Android SDK with ANDROID_HOME set.
       # A pinned Gradle rather than the wrapper, so CI works before the wrapper jar is committed.
       - uses: gradle/actions/setup-gradle@v4
         with:
