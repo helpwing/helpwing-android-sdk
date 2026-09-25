@@ -127,8 +127,9 @@ fun SupportChat(
         }
 
         state.typing?.let { typing ->
+            val typingText = support.copy.typingText
             BasicText(
-                text = labels.typing(typing.name),
+                text = if (typingText.isNotBlank()) typingText.replace("{name}", typing.name) else labels.typing(typing.name),
                 modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 6.dp),
                 style = muted.copy(fontSize = 12.sp, textAlign = TextAlign.Start),
             )

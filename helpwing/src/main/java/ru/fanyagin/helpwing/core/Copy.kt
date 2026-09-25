@@ -5,6 +5,7 @@ enum class CopyField(val key: String) {
     TITLE("title"),
     GREETING("greeting"),
     OFFLINE_MESSAGE("offline_message"),
+    TYPING_TEXT("typing_text"),
 }
 
 /** The project's own words in the app's language, falling back to what it wrote untranslated. */
@@ -18,6 +19,7 @@ object Copy {
                 CopyField.TITLE -> config.title
                 CopyField.GREETING -> config.greeting
                 CopyField.OFFLINE_MESSAGE -> config.offlineMessage
+                CopyField.TYPING_TEXT -> config.typingText
             }
         }
     }

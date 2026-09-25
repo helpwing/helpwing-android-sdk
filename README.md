@@ -122,11 +122,16 @@ HelpwingSettings(…, labels = SupportLabels(placeholder = "Écrivez un message�
 or per call site, `SupportChat(labels = …)`. Your app knows what language it is in and already
 has string resources; use them.
 
-**What the project wrote** — the header, the greeting and the offline message. Those are
-translated in the dashboard under **Chat widget → Appearance**, and picked by
+**What the project wrote** — the header, the greeting, the offline message and the typing
+text. Those are translated in the dashboard under **Chat widget → Appearance**, and picked by
 `HelpwingSettings.locale`, which defaults to the device's. `ru-RU` finds `ru`, and a language
 the project has not translated falls back to what it wrote without one. Read them yourself
 with `rememberSupport().copy` if you draw your own empty state.
+
+The typing text shown while an agent is writing — `"{name} is typing…"` by default, via
+`SupportLabels.typing` — is replaced by the project's own text (`{name}` substituted for the
+agent's name) whenever it has written one in the dashboard; otherwise `SupportLabels.typing`
+still applies, so an integrator override keeps working until the project sets its own.
 
 ## Colours
 

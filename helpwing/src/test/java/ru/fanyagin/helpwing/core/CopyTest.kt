@@ -7,13 +7,20 @@ class CopyTest {
     private val translated = WidgetConfig(
         greeting = "Hi! How can we help?",
         offlineMessage = "We are offline right now.",
-        translations = mapOf("ru" to mapOf("greeting" to "Здравствуйте! Чем можем помочь?")),
+        typingText = "{name} is typing",
+        translations = mapOf(
+            "ru" to mapOf(
+                "greeting" to "Здравствуйте! Чем можем помочь?",
+                "typing_text" to "{name} печатает",
+            ),
+        ),
     )
 
     @Test
     fun translationForTheLanguage() {
         assertEquals("Здравствуйте! Чем можем помочь?", Copy.forLocale(translated, CopyField.GREETING, "ru"))
         assertEquals("Здравствуйте! Чем можем помочь?", Copy.forLocale(translated, CopyField.GREETING, "ru-RU"))
+        assertEquals("{name} печатает", Copy.forLocale(translated, CopyField.TYPING_TEXT, "ru"))
     }
 
     @Test
@@ -22,6 +29,12 @@ class CopyTest {
         assertEquals("We are offline right now.", Copy.forLocale(translated, CopyField.OFFLINE_MESSAGE, "ru"))
         assertEquals("Hi! How can we help?", Copy.forLocale(translated, CopyField.GREETING))
         assertEquals("Hi! How can we help?", Copy.forLocale(translated.copy(translations = emptyMap()), CopyField.GREETING, "ru"))
+        assertEquals("{name} is typing", Copy.forLocale(translated, CopyField.TYPING_TEXT, "de"))
+    }
+
+    @Test
+    fun blankByDefault() {
+        assertEquals("", Copy.forLocale(WidgetConfig(), CopyField.TYPING_TEXT, "ru"))
     }
 
     @Test

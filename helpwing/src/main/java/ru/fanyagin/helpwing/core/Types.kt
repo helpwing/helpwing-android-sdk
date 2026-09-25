@@ -29,7 +29,9 @@ data class WidgetConfig(
     val title: String = "",
     val greeting: String = "",
     @SerialName("offline_message") val offlineMessage: String = "",
-    /** Title, greeting and offline message per language code. See [Copy.forLocale]. */
+    /** Shown while an agent is typing; may contain `{name}`. */
+    @SerialName("typing_text") val typingText: String = "",
+    /** Title, greeting, offline message and typing text per language code. See [Copy.forLocale]. */
     val translations: Map<String, Map<String, String>> = emptyMap(),
     @SerialName("default_locale") val defaultLocale: String = "",
     @SerialName("require_email") val requireEmail: Boolean = false,

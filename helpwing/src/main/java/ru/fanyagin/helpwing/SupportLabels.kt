@@ -11,6 +11,7 @@ data class SupportLabels(
     val offline: String = "No connection. Your messages will be sent when it comes back.",
     val online: String = "We are online",
     val away: String = "We are away right now",
+    /** Used only when the project has not written its own typing text. */
     val typing: (String) -> String = { name -> "$name is typing…" },
     val branding: String = "Powered by Helpwing",
     val loading: String = "Loading…",

@@ -20,8 +20,8 @@ import ru.fanyagin.helpwing.core.Palette
 import ru.fanyagin.helpwing.core.Typing
 import ru.fanyagin.helpwing.core.WidgetConfig
 
-/** The project's header, greeting and offline message, resolved against the locale. */
-data class SupportCopy(val title: String, val greeting: String, val offlineMessage: String)
+/** The project's header, greeting, offline message and typing text, resolved against the locale. */
+data class SupportCopy(val title: String, val greeting: String, val offlineMessage: String, val typingText: String = "")
 
 /** Everything the chat can do, as seen from a composable. */
 class Support internal constructor(
@@ -104,6 +104,7 @@ fun HelpwingProvider(
             title = Copy.forLocale(config, CopyField.TITLE, locale),
             greeting = Copy.forLocale(config, CopyField.GREETING, locale),
             offlineMessage = Copy.forLocale(config, CopyField.OFFLINE_MESSAGE, locale),
+            typingText = Copy.forLocale(config, CopyField.TYPING_TEXT, locale),
         )
     }
 
